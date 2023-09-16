@@ -1,8 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { loadingBarReducer } from 'react-redux-loading-bar';
+
+import users from '../reducers/users';
+import questions from '../reducers/questions';
+import auth from '../reducers/auth';
+import middleware from '../middleware';
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
+	reducer: {
+		users,
+		questions,
+		auth,
+		loadingBar: loadingBarReducer,
+	},
+	middleware,
 });
