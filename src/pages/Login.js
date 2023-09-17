@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { Alert, Form, Button, Container } from 'react-bootstrap';
+import { Alert, Form, Button } from 'react-bootstrap';
 
 import { handleLogInUser } from '../actions/auth';
 
-const Login = (props) => {
+const Login = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
+	const dispatch = useDispatch();
 	const error = useSelector((state) => state.auth.error);
 
 	const handleUsernameChange = (e) => {
@@ -21,7 +22,7 @@ const Login = (props) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		props.dispatch(handleLogInUser(username, password));
+		dispatch(handleLogInUser(username, password));
 	};
 
 	return (
@@ -47,4 +48,4 @@ const Login = (props) => {
 	);
 };
 
-export default connect()(Login);
+export default Login;

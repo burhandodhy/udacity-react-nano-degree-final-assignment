@@ -1,58 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { useEffect } from 'react';
+import { connect, useSelector } from 'react-redux';
+import { handleInitialData } from './actions/shared';
+
+import { Container } from 'react-bootstrap';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import HeaderNavbar from './components/HeaderNavbar';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import SinglePoll from './pages/SinglePoll';
+import NewPoll from './pages/NewPoll';
+import Leaderboard from './pages/Leaderboard';
+import NotFound from './pages/NotFound';
+
+import LoadingBar from 'react-redux-loading-bar';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+function App({ dispatch, loading }) {
+	const user = useSelector((state) => state.auth);
+	const isAuthenticated = user.id;
+
+	useEffect(() => {
+		dispatch(handleInitialData());
+	}, []);
+
+	return (
+		<>
+			<LoadingBar />
+			{loading === true ? null : (
+				<Router>
+					<HeaderNavbar />
+					<Container className="mt-5">
+						<Routes>
+							<Route path="/" exact element={!isAuthenticated ? <Login /> : <Home />} />
+							<Route path="/questions/:id" element={!isAuthenticated ? <Login /> : <SinglePoll />} />
+							<Route path="/add" element={!isAuthenticated ? <Login /> : <NewPoll />} />
+							<Route path="/leaderboard" element={!isAuthenticated ? <Login /> : <Leaderboard />} />
+							<Route path="*" element={!isAuthenticated ? <Login /> : <NotFound />} />
+						</Routes>
+					</Container>
+				</Router>
+			)}
+		</>
+	);
 }
 
-export default App;
+const mapStateToProps = (state) => {
+	return {
+		loading: !(Object.keys(state.users).length > 0),
+	};
+};
+export default connect(mapStateToProps)(App);

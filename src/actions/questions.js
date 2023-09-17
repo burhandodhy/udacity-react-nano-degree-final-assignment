@@ -1,4 +1,6 @@
-import { _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+
+import { _saveQuestion } from '../utils/_DATA';
 import { saveUserAnswer } from './users';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
@@ -21,6 +23,7 @@ export function addQuestion(question) {
 
 export function handleAddQuestion(optionOneText, optionTwoText) {
 	return (dispatch, getState) => {
+		dispatch(showLoading());
 		const { auth } = getState();
 		const question = {
 			optionOneText,
@@ -31,9 +34,10 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
 		_saveQuestion(question)
 			.then((question) => {
 				dispatch(addQuestion(question));
+				dispatch(hideLoading());
 			})
 			.catch((e) => {
-				console.warn('Error in handleAddQuestion: ', e);
+				alert('Error in handleAddQuestion: ', e);
 			});
 	};
 }
@@ -44,13 +48,5 @@ export function saveQuestionAnswer(authedUser, qid, answer) {
 		authedUser,
 		qid,
 		answer,
-	};
-}
-
-export function handleSaveQuestionAnswer(qid, answer) {
-	return (dispatch, getState) => {
-		const { auth } = getState();
-		dispatch(saveQuestionAnswer(auth.id, qid, answer));
-		dispatch(saveUserAnswer(auth.id, qid, answer));
 	};
 }

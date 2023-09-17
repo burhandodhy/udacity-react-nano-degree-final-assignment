@@ -5,7 +5,6 @@ const storedUser = localStorage.getItem('user');
 
 const initialState = storedUser ? JSON.parse(storedUser) : {}	;
 
-
 export default function auth(state = initialState, action) {
 	switch (action.type) {
 		case LOGIN_SUCCESS:

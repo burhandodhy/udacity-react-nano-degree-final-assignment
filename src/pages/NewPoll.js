@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import { handleAddQuestion } from '../actions/questions';
 
-const NewPoll = ( props ) => {
+const NewPoll = () => {
 	const [firstOption, setFirstOption] = useState('');
 	const [secondOption, setSecondOption] = useState('');
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const handleFirstOptionChange = (e) => {
 		setFirstOption(e.target.value);
@@ -21,7 +22,7 @@ const NewPoll = ( props ) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		props.dispatch(handleAddQuestion(firstOption, secondOption));
+		dispatch(handleAddQuestion(firstOption, secondOption));
 		navigate('/');
 	};
 
@@ -57,4 +58,4 @@ const NewPoll = ( props ) => {
 	);
 };
 
-export default connect()(NewPoll);
+export default NewPoll;

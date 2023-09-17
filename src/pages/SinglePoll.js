@@ -1,6 +1,6 @@
 import { Row, Col, Image, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { useSelector, connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { saveQuestionAnswer } from '../actions/questions';
 import { saveUserAnswer } from '../actions/users';
@@ -12,6 +12,7 @@ const SinglePoll = (props) => {
 	const user = useSelector((state) => state.auth);
 
 	const question = questions[id];
+	const dispatch = useDispatch();
 
 	if (!question) {
 		return <h1>404 - Question Not Found</h1>;
@@ -32,10 +33,9 @@ const SinglePoll = (props) => {
 		const answer = e.target.value;
 		const qid = id;
 
-		props.dispatch(saveQuestionAnswer(user.id, qid, answer));
-		props.dispatch(saveUserAnswer(user.id, qid, answer));
-
-	}
+		dispatch(saveQuestionAnswer(user.id, qid, answer));
+		dispatch(saveUserAnswer(user.id, qid, answer));
+	};
 
 	return (
 		<>
@@ -87,4 +87,4 @@ const SinglePoll = (props) => {
 	);
 };
 
-export default connect()(SinglePoll);
+export default SinglePoll;

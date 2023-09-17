@@ -1,21 +1,22 @@
 import { Navbar, Nav, Button } from 'react-bootstrap';
-import { useSelector, connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { handleLogOutUser } from '../actions/auth';
 
-const HeaderNavbar = (props) => {
+const HeaderNavbar = () => {
 	const user = useSelector((state) => state.auth);
 	const isAuthenticated = user.id;
+	const dispatch = useDispatch();
 
 	const handleLogout = () => {
-		props.dispatch(handleLogOutUser());
+		dispatch(handleLogOutUser());
 	};
 
 	return (
 		<Navbar bg="light" expand="lg">
 			<Link to="/" className="navbar-brand">
-				Your App Name
+				Employee Polls Web App
 			</Link>
 			{isAuthenticated ? (
 				<Navbar.Collapse id="basic-navbar-nav">
@@ -47,4 +48,4 @@ const HeaderNavbar = (props) => {
 	);
 };
 
-export default connect()(HeaderNavbar);
+export default HeaderNavbar;
