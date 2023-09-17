@@ -207,7 +207,7 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
 				},
 			};
 
-			resolve(true);
+			resolve({ users, questions });
 		}, 500);
 	});
 }

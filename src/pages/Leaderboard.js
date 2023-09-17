@@ -1,16 +1,10 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 const Leaderboard = () => {
-
 	const users = useSelector((state) => state.users);
 
-	const questions = useSelector((state) => state.questions);
-
 	const usersArray = Object.values(users);
-	usersArray && usersArray.sort((a, b) => (Object.keys(b.answers).length + b.questions.length) - (Object.keys(a.answers).length + a.questions.length));
-
-	console.log(usersArray);
-
+	usersArray && usersArray.sort((a, b) => Object.keys(b.answers).length + b.questions.length - (Object.keys(a.answers).length + a.questions.length));
 
 	return (
 		<div className="container mt-5">
@@ -41,5 +35,4 @@ const Leaderboard = () => {
 	);
 };
 
-
-export default Leaderboard
+export default Leaderboard;

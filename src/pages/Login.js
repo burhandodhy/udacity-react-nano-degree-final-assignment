@@ -32,15 +32,15 @@ const Login = () => {
 				{error && <Alert variant="danger">{error}</Alert>}
 				<Form.Group className="mb-3">
 					<Form.Label>Username</Form.Label>
-					<Form.Control type="text" placeholder="Enter username" value={username} onChange={handleUsernameChange} />
+					<Form.Control type="text" placeholder="Enter username" value={username} onChange={handleUsernameChange} data-testid="username" />
 				</Form.Group>
 
 				<Form.Group className="mb-3">
 					<Form.Label>Password</Form.Label>
-					<Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+					<Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordChange} data-testid="password" />
 				</Form.Group>
 
-				<Button variant="primary" type="submit">
+				<Button variant="primary" type="submit" data-testid="submit">
 					Login
 				</Button>
 			</Form>

@@ -1,4 +1,4 @@
-import { Col, Card, Button } from 'react-bootstrap';
+import { Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const QuestionCard = (props) => {
@@ -10,7 +10,10 @@ const QuestionCard = (props) => {
 				<Card.Body>
 					<Card.Title>{author}</Card.Title>
 					<Card.Text>{date}</Card.Text>
-					<Link to={`/questions/${id}`} className="btn btn-primary"> Show </Link>
+					<Link to={`/questions/${id}`} className="btn btn-primary">
+						{' '}
+						Show{' '}
+					</Link>
 				</Card.Body>
 			</Card>
 		</Col>

@@ -29,9 +29,9 @@ export function handleLogInUser(username, password) {
 	return (dispatch, getState) => {
 		const { users } = getState();
 		const user = Object.values(users).find((user) => user.id === username);
-		localStorage.setItem('user', JSON.stringify(user));
 		if (user && user.password === password) {
 			dispatch(logInUser(user));
+			localStorage.setItem('user', JSON.stringify(user));
 		} else {
 			dispatch(logInError('Incorrect Username or Password.'));
 		}
