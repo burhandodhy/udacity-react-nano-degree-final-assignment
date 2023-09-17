@@ -1,20 +1,14 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-
-import App from './App';
-
-import { loadingBarReducer } from 'react-redux-loading-bar';
-
-import thunk from 'redux-thunk';
-
 import configureStore from 'redux-mock-store';
-
-import { _saveQuestionAnswer } from './utils/_DATA';
+import thunk from 'redux-thunk';
+import { loadingBarReducer } from 'react-redux-loading-bar';
+import { _saveQuestionAnswer, _saveQuestion } from './utils/_DATA';
+import App from './App';
 import Leaderboard from './pages/Leaderboard';
 
 const middlewares = [thunk];
-
 const mockStore = configureStore(middlewares);
 
 const qid = 'vthrdm985a262al8qx3do';
@@ -89,19 +83,44 @@ test('Renders Login Page', () => {
 	expect(h1Element.textContent).toBe('Login');
 });
 
-test('_saveQuestionAnswer function returns updated state when correct data is passed', async () => {
-	const result = await _saveQuestionAnswer({ authedUser, qid, answer });
+describe('_saveQuestion', () => {
+	const dummyQuestion = {
+		optionOneText: 'Build our new application with Javascript',
+		optionTwoText: 'Build our new application with Typescript',
+		author: authedUser,
+	};
 
-	expect(result.questions[qid].optionOne.votes).toContain(authedUser);
-	expect(result.questions[qid].optionOne.votes.length).toEqual(2);
+	it('will return correct question format', async () => {
+		const results = await _saveQuestion(dummyQuestion);
+		expect(results.optionOne.votes.length).toEqual(0);
+		expect(results.optionTwo.votes.length).toEqual(0);
+		expect(results.optionOne.text).toEqual(dummyQuestion.optionOneText);
+		expect(results.optionTwo.text).toEqual(dummyQuestion.optionTwoText);
+	});
+
+	it('will return error when it not has author info', async () => {
+		_saveQuestion({
+			...dummyQuestion,
+			author: '',
+		}).catch((err) => expect(err).toEqual('Please provide optionOneText, optionTwoText, and author'));
+	});
 });
 
-test('_saveQuestionAnswer function returns error when data is missing', async () => {
-	try {
-		await _saveQuestionAnswer({ authedUser: '', qid, answer });
-	} catch (error) {
-		expect(error).toBe('Please provide authedUser, qid, and answer');
-	}
+describe('_saveQuestionAnswer', () => {
+	test('Returns updated state when correct data is passed', async () => {
+		const result = await _saveQuestionAnswer({ authedUser, qid, answer });
+
+		expect(result.questions[qid].optionOne.votes).toContain(authedUser);
+		expect(result.questions[qid].optionOne.votes.length).toEqual(2);
+	});
+
+	test('Returns error when data is missing', async () => {
+		try {
+			await _saveQuestionAnswer({ authedUser: '', qid, answer });
+		} catch (error) {
+			expect(error).toBe('Please provide authedUser, qid, and answer');
+		}
+	});
 });
 
 test('Login form returns error when incorrect credentials add', async () => {
