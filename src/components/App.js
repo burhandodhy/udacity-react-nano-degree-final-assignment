@@ -7,11 +7,11 @@ import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import HeaderNavbar from './HeaderNavbar';
-import Login from './Login';
-import Home from './Home';
-import SinglePoll from './SinglePoll';
-import NewPoll from './NewPoll';
-import Leaderboard from './Leaderboard';
+import Login from '../pages/Login';
+import Home from '../pages/Home';
+import SinglePoll from '../pages/SinglePoll';
+import NewPoll from '../pages/NewPoll';
+import Leaderboard from '../pages/Leaderboard';
 
 import LoadingBar from 'react-redux-loading-bar';
 

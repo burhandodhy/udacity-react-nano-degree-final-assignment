@@ -1,46 +1,33 @@
-# Getting Started with Create React App and Redux
+# Employee Polls Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Available Scripts
+This is a web app that allows users to create polls and vote on them. The app is built using React and Redux.
 
-In the project directory, you can run:
+The user can create an many polls as they want. Each poll has two options. The user can vote on any poll they want. The user can also see the results of any poll they want.
 
-### `npm start`
+The app has a Leaderboard page that shows all the users and the number of polls they have created and the number of polls they have voted on.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+To get started developing right away:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Clone the project using `git clone git@github.com:burhandodhy/udacity-react-nano-degree-final-assignment.git`
+- Go into the directory `cd udacity-react-nano-degree-final-assignment`
+- Install all project dependencies with `npm install`
+- Start the development server with `npm start`
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm run build`
+## What You're Getting
+All of the files were created using the create-react-app starter. The most important folder is `src`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The `src` directory contains the following folders:
+- `components` - contains all the components used in the app
+- `icons` - contains all the icons used in the app
+- `pages` - contains all the pages used in the app
+- `reducers` - contains all the reducers used in the app
+- `utils` - contains all the utility functions used in the app
+- `middleware` - contains all the middleware used in the app
+- `actions` - contains all the actions used in the app
+- `App.js` - contains the main app component
+- `App.css` - contains the main app styles
