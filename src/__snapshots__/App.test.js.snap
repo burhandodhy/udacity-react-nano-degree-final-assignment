@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Leaderboard page 1`] = `
+<div>
+  <div
+    class="container mt-5"
+  >
+    <table
+      class="table table-bordered"
+    >
+      <thead
+        class="table-light"
+      >
+        <tr>
+          <th
+            style="width: 60%;"
+          >
+            Users
+          </th>
+          <th
+            style="width: 20%;"
+          >
+            Answered
+          </th>
+          <th
+            style="width: 20%;"
+          >
+            Created
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img
+              alt="Sarah Edo"
+              class="avatar-img"
+              src="https://tylermcginnis.com/would-you-rather/sarah.jpg"
+            />
+            Sarah Edo
+            <br />
+            sarahedo
+          </td>
+          <td>
+            4
+          </td>
+          <td>
+            2
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Login user can access the dashboard 1`] = `
+<div>
+  <div />
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light"
+  >
+    <a
+      class="navbar-brand"
+      href="/"
+    >
+      Employee Polls Web App
+    </a>
+    <div
+      class="navbar-collapse collapse"
+      id="basic-navbar-nav"
+    >
+      <div
+        class="mr-auto navbar-nav"
+      >
+        <a
+          class="nav-link"
+          href="/"
+        >
+          Home
+        </a>
+        <a
+          class="nav-link"
+          href="/leaderboard"
+        >
+          Leaderboard
+        </a>
+        <a
+          class="nav-link"
+          href="/add"
+        >
+          New Poll
+        </a>
+      </div>
+      <div
+        class="justify-content-end navbar-collapse collapse"
+      >
+        <div
+          class="navbar-nav"
+        >
+          <div
+            class="d-flex align-items-center"
+          >
+            <span
+              class="mr-3"
+            >
+              Logged in as 
+            </span>
+            <img
+              alt="User Avatar"
+              class="avatar-img"
+            />
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div
+    class="mt-5 container"
+  >
+    <div>
+      <h2>
+        Done
+      </h2>
+      <div
+        class="mt-4 row"
+      >
+        <div
+          class="mb-4 col-md-4"
+        >
+          <div
+            class="card"
+          >
+            <div
+              class="card-body"
+            >
+              <div
+                class="card-title h5"
+              >
+                sarahedo
+              </div>
+              <p
+                class="card-text"
+              >
+                6/29/2016, 7:21:12 AM
+              </p>
+              <a
+                class="btn btn-primary"
+                href="/questions/8xf0y6ziyjabvozdd253nd"
+              >
+                 
+                Show
+                 
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Return Login Page 1`] = `
+<div>
+  <div />
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light"
+  >
+    <a
+      class="navbar-brand"
+      href="/"
+    >
+      Employee Polls Web App
+    </a>
+  </nav>
+  <div
+    class="mt-5 container"
+  >
+    <div>
+      <h1>
+        Login
+      </h1>
+      <form
+        class=""
+      >
+        <div
+          class="mb-3"
+        >
+          <label
+            class="form-label"
+          >
+            Username
+          </label>
+          <input
+            class="form-control"
+            data-testid="username"
+            placeholder="Enter username"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="mb-3"
+        >
+          <label
+            class="form-label"
+          >
+            Password
+          </label>
+          <input
+            class="form-control"
+            data-testid="password"
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          class="btn btn-primary"
+          data-testid="submit"
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
