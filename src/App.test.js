@@ -124,7 +124,7 @@ describe('_saveQuestionAnswer', () => {
 });
 
 test('Login form returns error when incorrect credentials add', async () => {
-	const { getByTestId, getByText } = render(
+	const { getByTestId } = render(
 		<Provider store={mockedStore}>
 			<App />
 		</Provider>

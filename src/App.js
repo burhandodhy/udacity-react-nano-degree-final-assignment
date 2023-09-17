@@ -25,6 +25,7 @@ function App({ dispatch, loading }) {
 
 	useEffect(() => {
 		dispatch(handleInitialData());
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
