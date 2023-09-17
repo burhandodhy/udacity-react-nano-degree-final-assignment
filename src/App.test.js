@@ -90,7 +90,7 @@ describe('_saveQuestion', () => {
 		author: authedUser,
 	};
 
-	it('will return correct question format', async () => {
+	it('return correct question format', async () => {
 		const results = await _saveQuestion(dummyQuestion);
 		expect(results.optionOne.votes.length).toEqual(0);
 		expect(results.optionTwo.votes.length).toEqual(0);
@@ -98,11 +98,16 @@ describe('_saveQuestion', () => {
 		expect(results.optionTwo.text).toEqual(dummyQuestion.optionTwoText);
 	});
 
-	it('will return error when it not has author info', async () => {
-		_saveQuestion({
-			...dummyQuestion,
-			author: '',
-		}).catch((err) => expect(err).toEqual('Please provide optionOneText, optionTwoText, and author'));
+	it('returns an error when author is not set', async () => {
+		expect.assertions(1);
+		try {
+			await _saveQuestion({
+				...dummyQuestion,
+				author: '',
+			});
+		} catch (error) {
+			expect(error).toEqual('Please provide optionOneText, optionTwoText, and author');
+		}
 	});
 });
 
@@ -114,7 +119,7 @@ describe('_saveQuestionAnswer', () => {
 		expect(result.questions[qid].optionOne.votes.length).toEqual(2);
 	});
 
-	test('Returns error when data is missing', async () => {
+	test('Returns and error when author is missing', async () => {
 		try {
 			await _saveQuestionAnswer({ authedUser: '', qid, answer });
 		} catch (error) {
