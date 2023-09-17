@@ -1,6 +1,7 @@
 import { Row, Col, Image, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 import { saveQuestionAnswer } from '../actions/questions';
 import { saveUserAnswer } from '../actions/users';
@@ -10,12 +11,14 @@ const SinglePoll = (props) => {
 	const questions = useSelector((state) => state.questions);
 	const users = useSelector((state) => state.users);
 	const user = useSelector((state) => state.auth);
+	const navigate = useNavigate();
 
 	const question = questions[id];
 	const dispatch = useDispatch();
 
 	if (!question) {
-		return <h1>404 - Question Not Found</h1>;
+		navigate('/404');
+		return null;
 	}
 
 	const author = users[question.author];
